@@ -1,0 +1,21 @@
+{
+    "name": "react-native-keyboard-event",
+    "version": "1.0.0",
+    "description": "react-native keyboard event for android & iOS",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "react-native",
+        "keyboard",
+        "event"
+    ],
+    "author": "angusfu1126@qq.com",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/AngusFu/react-native-keyboard-event.git"
+    },
+    "license": "MIT",
+    "dependencies": {}
+}
