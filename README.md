@@ -11,15 +11,17 @@ react-native keyboard event for android & iOS
 $ npm i react-native-keyboard-event --save
 ```
 
+### Usage
+
+````javascript
+
 import KeyListener from 'react-native-keyboard-event';
 
-KeyListener
-	.show(onkeyboardShow)
-	.hide(onkeyboardHide);
+KeyListener.show(onkeyboardShow).hide(onkeyboardHide);
 
 // Note
 // event name is up to platform
-KeyListener.hideEvent;
-KeyListener.showEvent;
+console.log(KeyListener.hideEvent);  // iOS: 'keyboardWillShow'; Android: 'keyboardDidShow'
+console.log(KeyListener.showEvent);  // iOS: 'keyboardWillHide'; Android: 'keyboardDidHide'
 
 ```
