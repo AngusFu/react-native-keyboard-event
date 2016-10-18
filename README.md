@@ -6,10 +6,8 @@
 react-native keyboard event for android & iOS
 
 ```
+Installation
 
-### Installation
-
-```bash
 $ npm i react-native-keyboard-event --save
 ```
 
