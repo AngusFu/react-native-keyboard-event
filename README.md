@@ -5,6 +5,10 @@
 
 react-native keyboard event for android & iOS
 
+### Installation
+
+```
+$ npm i react-native-keyboard-event --save
 ```
 
 import KeyListener from 'react-native-keyboard-event';
