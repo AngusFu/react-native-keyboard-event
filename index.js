@@ -1,8 +1,12 @@
 /**
  * @desc    react-native keyboard event binding
- * @author  fj10854
- * @email   angusfu1126@qq.com
- * @date    2016-04-18 18:04:29
+ * @author  angusfu1126@qq.com
+ * @version 2.0.0
+ * 
+ * @changeLog removeListener
+ * 
+ * NOTICE that now we can use [Keyboard Module
+ * @see http://facebook.github.io/react-native/docs/keyboard.html
  */
 import { DeviceEventEmitter, Platform } from 'react-native';
 
@@ -10,29 +14,39 @@ const isAndroid = Platform.OS.toLowerCase() == "android";
 const hideEvent = isAndroid ? 'keyboardDidHide' : 'keyboardWillHide';
 const showEvent = isAndroid ? 'keyboardDidShow' : 'keyboardWillShow';
 
-class KeyUpShowListener {
-    constructor() {}
+export class KeyUpShowListener {
+  constructor() {
+    this.listeners = {
+      hideEvent: [],
+      showEvent: []
+    };
 
-    hideEvent = hideEvent;
-    showEvent = showEvent;
+    this.hideEvent = hideEvent;
+    this.showEvent = showEvent;
+  }
 
-    hide(onKeyboardHide, ...args) {
-        DeviceEventEmitter.addListener( hideEvent, () => {
-            onKeyboardHide.apply(null, args.concat.call(args, arguments));
-        } );
+  hide(onKeyboardHide, ...defaults) {
+    let fn = function (...args) {
+      onKeyboardHide(defaults.concat(args));
+    };
 
-        return this;
-    }
+    this.listeners.hideEvent.push(fn);
+    DeviceEventEmitter.addListener(hideEvent, fn);
+    return this;
+  }
 
-    show(onKeyboardShow) {
-        DeviceEventEmitter.addListener( showEvent, () => {
-            onKeyboardShow.apply(null, args.concat.call(args, arguments));
-        } );
+  show(onKeyboardShow, ...defaults) {
+    let fn = function (...args) {
+      onKeyboardShow(defaults.concat(args));
+    };
 
-        return this;
-    }
+    this.listeners.showEvent.push(fn);
+    DeviceEventEmitter.addListener(showEvent, fn);
+    return this;
+  }
+
+  off() {
+    DeviceEventEmitter.removeAllListeners(showEvent);
+    DeviceEventEmitter.removeAllListeners(hideEvent);
+  }
 }
-
-const keyListener = new KeyUpShowListener();
-
-export default keyListener;
