@@ -1,5 +1,11 @@
 # react-native-keyboard-event
 
+**Notice that now we can use [Keyboard Module](http://facebook.github.io/react-native/docs/keyboard.html) in React Native.**
+
+This module is **abolished**.
+
+-------
+
 [![npm](https://img.shields.io/npm/v/react-native-keyboard-event.svg?style=flat-square)](https://www.npmjs.com/package/react-native-keyboard-event)
 [![npm](https://img.shields.io/npm/dt/react-native-keyboard-event.svg?style=flat-square)](https://www.npmjs.com/package/react-native-keyboard-event)
 
